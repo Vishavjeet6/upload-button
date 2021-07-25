@@ -32,7 +32,7 @@ app.use(bodyParser.urlencoded({extended: true}));
 app.use(morgan('dev'));
 
 // to make file accessible like localhost://file
-// app.use(express.static('uploads'));
+app.use(express.static('uploads'));
 
 app.get('/', function (req, res) {
     res.send('Hello World from GCE!'); 

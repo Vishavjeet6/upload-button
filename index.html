@@ -1,11 +1,13 @@
-<html>
-   <head>
-      <title>File Uploading Form</title>
-   </head>
-
-   <body>
-
-      <h3>File Upload:</h3>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta charset="UTF-8">
+   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>File Uploading Form</title>
+</head>
+<body>
+   <h3>File Upload:</h3>
       Select a file to upload: <br />
       
       <form id="formElem" name="formElem"
@@ -13,52 +15,45 @@
          <input type="file" id="file_upload"  name="file_upload" />
          <input type="hidden" id="userid" name="userid" value="default" />
          <br />
-         <input type = "submit" onClick="return validate()" value = "Upload File" />
+         <input type = "submit" value = "Upload File" />
       </form>
 
-
-
       <script>
-
- 
          formElem.onsubmit = async (e) => {
-           e.preventDefault();
+         e.preventDefault();
 
-           function setID(){
-            var url = window.location.href;
-            var urlarr = url.split('/');
-            var id = urlarr[urlarr.length - 1];
-            document.formElem.userid.value = id;
-          //   document.getElementById("userid").value = id;
-          }
- 
-          function validate(){
-             var size=5242880;
-             var file_size=document.getElementById('file_upload').files[0].size;
-             if(file_size>=size){
-                   return false;
-             }
-             return true;
-          }
- 
-           if(validate()){
-             await setID();
+         function setID(){
+         var url = window.location.href;
+         var urlarr = url.split('/');
+         var id = urlarr[urlarr.length - 1];
+         document.formElem.userid.value = id;
+         //   document.getElementById("userid").value = id;
+         }
 
-             let response = await fetch('/upload', {
-                method: 'POST',
-                body: new FormData(formElem)
-                });
-             let result = await response.json();
-             alert(result.message);
-              
-           }else{
-              alert('Please upload file less than 5mb');
-           }
-         };       
- 
- 
-       </script>
-      
-   </body>
+         function validate(){
+            var size=5242880;
+            if(document.getElementById('file_upload').files[0] === undefined) return false;
+            var file_size=document.getElementById('file_upload').files[0].size;
+            if(file_size>=size){
+                  return false;
+            }
+            return true;
+         }
+
+         if(validate()){
+            setID();
+
+            let response = await fetch('/upload', {
+               method: 'POST',
+               body: new FormData(formElem)
+               });
+            let result = await response.json();
+            alert(result.message);
+            
+         }else{
+            alert('Please upload file less than 5mb');
+         }
+      };
+      </script>
+</body>
 </html>
-
