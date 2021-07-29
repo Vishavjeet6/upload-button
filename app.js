@@ -10,12 +10,17 @@ const app = express();
 var https = require('https');
 var http = require('http');
 var fs = require('fs');
+var path = require('path')
 
 var options = {
     key: fs.readFileSync('cert2/key.pem'),
     cert: fs.readFileSync('cert2/cert.pem'),
     passphrase: 'vishav'
   };
+
+// enable css and js
+app.use(express.static(path.join(__dirname, '/public')));
+
 
 // enable files upload
 app.use(fileUpload({
@@ -43,6 +48,9 @@ app.get('/uploadfile/:id', function (req, res) {
     res.sendFile(__dirname + "/index.html");
  });
 
+ app.get('/uploadaudio/:id', function (req, res) {
+    res.sendFile(__dirname + "/audio.html");
+ });
 
 app.post('/upload', async (req, res) => {
     try {

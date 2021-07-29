@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Audio Upload</title>
+    <link href="/styles/audio.css" rel="stylesheet" type="text/css">
+</head>
+<body>
+    <div class="wrapper">
+        <header>
+            <h1>Please upload or Record Audio</h1>
+        </header>
+
+            <section class="main-controls">
+                <canvas class="visualizer" height="60px"></canvas>
+                <div id="buttons">
+                <button class="record">Record</button>
+                <button class="stop">Stop</button>
+                </div>
+            </section>
+
+        <section class="sound-clips">
+        </section>
+
+        <br/>
+
+        <div class="form-div">
+            <form id="formElem" name="formElem"
+            enctype = "multipart/form-data">
+                <input type="file" id="file_upload"  name="file_upload" accept="audio/*" />
+                <input type="hidden" id="userid" name="userid" value="default" />
+                <br />
+            </form>
+        </div>
+    <br/>
+
+        <button onclick="uploadAudio()">Submit</button>
+    </div>
+    <script src="/scripts/audio.js"></script>
+</body>
+</html>
