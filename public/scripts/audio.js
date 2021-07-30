@@ -194,7 +194,7 @@ function visualize(stream) {
 
 function setID(){
   document.getElementById("userid").value = id;
-  }
+}
 
 async function upload(formData){
     let response = await fetch('/upload', {
@@ -203,32 +203,43 @@ async function upload(formData){
       });
       let result = await response.json();
       alert(result.message);
+      if(response.status == 200){
+        window.close();
+      }
 }
 
 
+function validate(){
+  var size=5242880;
+  if(document.getElementById('file_upload').files[0] === undefined) return false;
+  var file_size=document.getElementById('file_upload').files[0].size;
+  if(file_size>size){
+        return false;
+  }
+  return true;
+}
+
 function uploadAudio(){
   if(liveaudio){
-    var formData = new FormData();
-    formData.append('file_upload',blob,document.getElementsByTagName('p')[0].textContent+'.wav');
-    formData.append('userid',id);
+    if(blob.size < 5242880){
+      var formData = new FormData();
+      formData.append('file_upload',blob,document.getElementsByTagName('p')[0].textContent+'.wav');
+      formData.append('userid',id);
+      upload(formData);
+    }else{
+      alert('Please Record Audio less than 5mb');
+    }
 
-    upload(formData);
-
-    // (async function(){
-    //   let response = await fetch('/upload', {
-    //     method: 'POST',
-    //     body: formData
-    //     });
-
-    //     let result = await response.json();
-    //     alert(result.message);
-
-    // })();
-
+    
   }else if(localaudio){
-    setID();
-    var formData = new FormData(document.getElementById('formElem'));
-    upload(formData);
+    if (validate()){
+      setID();
+      var formData = new FormData(document.getElementById('formElem'));
+      upload(formData);
+    }
+    else{
+      alert('Please Upload Audio less than 5mb');
+    }
   }else{
     alert('Please Upload or Record Audio');
   }
