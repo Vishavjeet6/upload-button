@@ -202,7 +202,7 @@ async function upload(formData){
       body: formData
       });
       let result = await response.json();
-      alert(result.message);
+      // alert(result.message);
       if(response.status == 200){
         window.close();
       }

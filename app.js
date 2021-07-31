@@ -37,7 +37,7 @@ app.use(bodyParser.urlencoded({extended: true}));
 app.use(morgan('dev'));
 
 // to make file accessible like localhost://file
-app.use(express.static('uploads'));
+// app.use(express.static('uploads'));
 
 app.get('/', function (req, res) {
     res.send('Hello World from GCE!'); 
@@ -45,7 +45,7 @@ app.get('/', function (req, res) {
 
 
 app.get('/uploadfile/:id', function (req, res) {
-    res.sendFile(__dirname + "/index.html");
+    res.sendFile(__dirname + "/file.html");
  });
 
  app.get('/uploadaudio/:id', function (req, res) {

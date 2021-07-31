@@ -8,35 +8,72 @@
     <link href="/styles/audio.css" rel="stylesheet" type="text/css">
 </head>
 <body>
-    <div class="wrapper">
-        <header>
-            <h1>Please upload or Record Audio</h1>
-        </header>
+    <div class="div" id="page_form">
+        <div class="cf-page__header" role="banner"></div>
+        <table id="questionTable" style="width: 100%" width="100%">
+            <tbody>
+                <tr>
+                    <td style="text-align: center"><img style="width: 100%" alt="" src="/images/banner.png" width="1373" height="145" border="0">&nbsp;</td>
+                </tr>
+                <tr>
+                    <td>
+                       <div style="text-align: center">      
+                       </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>          
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                       <div class="stitle" style="text-align: center;">ApluSatisfaction</div>
+                       <div><hr style="border: solid #ca1522 2px;"></div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                       <br/>
+                       <h3>Please upload or Record Audio</h3>
+                       <br/>
+                    </td>
+                </tr>
+                <tr class="main-content">
+                    <td>
+                        <div class="wrapper">
+                            <section class="main-controls">
+                                <canvas class="visualizer" height="60px"></canvas>
+                                <div id="buttons">
+                                <button class="record">Record</button>
+                                <button class="stop">Stop</button>
+                                </div>
+                            </section>   
 
-            <section class="main-controls">
-                <canvas class="visualizer" height="60px"></canvas>
-                <div id="buttons">
-                <button class="record">Record</button>
-                <button class="stop">Stop</button>
-                </div>
-            </section>
+                            <section class="sound-clips">
+                            </section>
+                    
+                            <br/>
+                    
+                            <div class="form-div">
+                                <form id="formElem" name="formElem"
+                                enctype = "multipart/form-data">
+                                    <input class="nav-input" type="file" id="file_upload"  name="file_upload" accept="audio/*" />
+                                    <input type="hidden" id="userid" name="userid" value="default" />
+                                    <br />
+                                </form>
+                            </div>
+                        <br/>
+                    
+                            <button onclick="uploadAudio()">Submit</button>
 
-        <section class="sound-clips">
-        </section>
-
-        <br/>
-
-        <div class="form-div">
-            <form id="formElem" name="formElem"
-            enctype = "multipart/form-data">
-                <input type="file" id="file_upload"  name="file_upload" accept="audio/*" />
-                <input type="hidden" id="userid" name="userid" value="default" />
-                <br />
-            </form>
-        </div>
-    <br/>
-
-        <button onclick="uploadAudio()">Submit</button>
+                        </div>
+                    </td>
+                </tr>
+                <tr class="extra-content">
+                    <td></td>
+                </tr>                       
+            </tbody>
+        </table>
     </div>
     <script src="/scripts/audio.js"></script>
 </body>

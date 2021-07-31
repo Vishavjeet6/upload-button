@@ -1,0 +1,42 @@
+#questionTable {
+    border-radius: 35px;
+    border-bottom: 15px solid #1d335e;
+    border-top: 15px solid #ca1522;
+    background: #e9e8e3;
+    padding-top: 18px; 
+}
+
+#page_form,.cf-page__header,html {
+    background: #3e4363;  
+    }
+    
+.nav-button {
+border-radius: 58px;
+background-color: #ca1522;
+color: white;
+border: none;
+padding: 15px 32px;
+text-align: center;
+text-decoration: none;
+display: inline-block;
+font-size: 16px;
+} 
+
+.nav-input {
+    border-radius: 58px;
+    border: none;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+}
+
+.main-content{
+    background: white;
+    height: 100px;
+}
+
+.extra-content{
+    height: 100px;
+}

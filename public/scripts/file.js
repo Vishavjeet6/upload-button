@@ -27,7 +27,10 @@ formElem.onsubmit = async (e) => {
           body: new FormData(formElem)
           });
        let result = await response.json();
-       alert(result.message);
+      //  alert(result.message);
+       if(response.status == 200){
+         window.close();
+       }
        
     }else{
        alert('Please upload file less than 5mb');
