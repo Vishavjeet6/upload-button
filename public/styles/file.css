@@ -11,21 +11,23 @@ html, body {
     padding-top: 18px; 
 }
 
+
 #page_form,.cf-page__header,html {
     background: #3e4363;  
     }
     
 .nav-button {
-border-radius: 58px;
-background-color: #ca1522;
-color: white;
-border: none;
-text-align: center;
-text-decoration: none;
-display: inline-block;
-font-size: 16px;
-width: 120px;
-height: 30px;
+    cursor: pointer;
+    border-radius: 58px;
+    background-color: #ca1522;
+    color: white;
+    border: none;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    width: 120px;
+    height: 30px;
 } 
 
 .nav-input {
