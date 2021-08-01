@@ -22,7 +22,7 @@ formElem.onsubmit = async (e) => {
     if(validate()){
        setID();
 
-       let response = await fetch('/upload', {
+       let response = await fetch('/upload/file', {
           method: 'POST',
           body: new FormData(formElem)
           });

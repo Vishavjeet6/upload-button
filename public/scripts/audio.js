@@ -197,7 +197,7 @@ function setID(){
 }
 
 async function upload(formData){
-    let response = await fetch('/upload', {
+    let response = await fetch('/upload/audio', {
       method: 'POST',
       body: formData
       });

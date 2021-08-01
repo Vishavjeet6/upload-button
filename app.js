@@ -7,15 +7,19 @@ const _ = require('lodash');
 
 const app = express();
 
+const config = require('./config');
+const { HTTP_PORT, HTTPS_PORT, KEY_FILE, CERT_FILE, PASS_PHRASE } = config.env;
+const { filesize , audiosize, uploadfilepath, uploadaudiopath} = config.file;
+
 var https = require('https');
 var http = require('http');
 var fs = require('fs');
 var path = require('path')
 
 var options = {
-    key: fs.readFileSync('cert2/key.pem'),
-    cert: fs.readFileSync('cert2/cert.pem'),
-    passphrase: 'vishav'
+    key: fs.readFileSync(KEY_FILE),
+    cert: fs.readFileSync(CERT_FILE),
+    passphrase: PASS_PHRASE
   };
 
 // enable css and js
@@ -40,19 +44,19 @@ app.use(morgan('dev'));
 // app.use(express.static('uploads'));
 
 app.get('/', function (req, res) {
-    res.send('Hello World from GCE!'); 
- });
+    res.send('Hello there'); 
+});
 
 
 app.get('/uploadfile/:id', function (req, res) {
     res.sendFile(__dirname + "/file.html");
  });
 
- app.get('/uploadaudio/:id', function (req, res) {
+app.get('/uploadaudio/:id', function (req, res) {
     res.sendFile(__dirname + "/audio.html");
- });
+});
 
-app.post('/upload', async (req, res) => {
+app.post('/upload/file', async (req, res) => {
     try {
         if(!req.files) {
             res.send({
@@ -66,9 +70,8 @@ app.post('/upload', async (req, res) => {
             id = (id === undefined) ? "default" : id;
 
 
-            // Checking File Size (Max Size - 1MB)
-            if(avatar.size > 5242880){
-
+            // Checking File Size (Max Size - 5MB)
+            if(avatar.size > filesize){
         
                 return res.send({
                     status: 413,
@@ -77,7 +80,53 @@ app.post('/upload', async (req, res) => {
             }
             
             //Use the mv() method to place the file in upload directory (i.e. "uploads")
-            avatar.mv(`./uploads/${id}/` + avatar.name);
+            avatar.mv(uploadfilepath+`${id}/` + avatar.name);
+            // avatar.mv('./uploads/' + avatar.name);
+
+            //send response
+            res.send({
+                status: true,
+                message: 'File is uploaded',
+                // data: {
+                //     name: avatar.name,
+                //     mimetype: avatar.mimetype,
+                //     size: avatar.size
+                // }
+            });
+        }
+    } catch (err) {
+        console.log(err);
+        res.status(500).send(err);
+    }
+});
+
+
+
+app.post('/upload/audio', async (req, res) => {
+    try {
+        if(!req.files) {
+            res.send({
+                status: false,
+                message: 'No file uploaded'
+            });
+        } else {
+            //Use the name of the input field (i.e. "avatar") to retrieve the uploaded file
+            let avatar = req.files.file_upload;
+            let id = req.body.userid;
+            id = (id === undefined) ? "default" : id;
+
+
+            // Checking File Size (Max Size - 5MB)
+            if(avatar.size > audiosize){
+        
+                return res.send({
+                    status: 413,
+                    message: 'file size greater than 5mb'
+                });
+            }
+            
+            //Use the mv() method to place the file in upload directory (i.e. "uploads")
+            avatar.mv(uploadaudiopath+`${id}/` + avatar.name);
             // avatar.mv('./uploads/' + avatar.name);
 
             //send response
@@ -101,10 +150,10 @@ app.post('/upload', async (req, res) => {
 // const port = process.env.PORT || 3000;
 
 
-http.createServer(app).listen(3000, () => 
-console.log('App is listening on port 3000'));
-https.createServer(options, app).listen(4000, () => 
-console.log('App is listening on port 4000'));
+http.createServer(app).listen(HTTP_PORT, () => 
+console.log(`HTTP App is listening on port ${process.env.HTTP_PORT}`));
+https.createServer(options, app).listen(HTTPS_PORT, () => 
+console.log(`HTTPS App is listening on port ${process.env.HTTPS_PORT}`));
 
 // app.listen(port, () => 
 //   console.log(`App is listening on port ${port}.`)
