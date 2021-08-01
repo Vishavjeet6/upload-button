@@ -1,3 +1,8 @@
+html, body {
+    height: 100%;
+    font-family: Arial;
+  }
+
 #questionTable {
     border-radius: 35px;
     border-bottom: 15px solid #1d335e;
@@ -15,11 +20,12 @@ border-radius: 58px;
 background-color: #ca1522;
 color: white;
 border: none;
-padding: 15px 32px;
 text-align: center;
 text-decoration: none;
 display: inline-block;
 font-size: 16px;
+width: 120px;
+height: 30px;
 } 
 
 .nav-input {
@@ -40,3 +46,8 @@ font-size: 16px;
 .extra-content{
     height: 100px;
 }
+
+td {
+    padding-left: 20px;
+    padding-right:20px;   
+  }
