@@ -70,7 +70,6 @@ app.post('/upload/file', async (req, res) => {
             let id = req.body.userid;
             id = (id === undefined) ? "default" : id;
 
-
             // Checking File Size (Max Size - 5MB)
             if(avatar.size > filesize){
         
@@ -81,7 +80,7 @@ app.post('/upload/file', async (req, res) => {
             }
             
             //Use the mv() method to place the file in upload directory (i.e. "uploads")
-            avatar.mv(uploadfilepath+`${id}/` + avatar.name);
+            avatar.mv(uploadfilepath +`/${id}_` + avatar.name);
             // avatar.mv('./uploads/' + avatar.name);
 
             //send response
@@ -127,7 +126,8 @@ app.post('/upload/audio', async (req, res) => {
             }
             
             //Use the mv() method to place the file in upload directory (i.e. "uploads")
-            avatar.mv(uploadaudiopath+`${id}/` + avatar.name);
+            avatar.mv(uploadaudiopath +`/${id}_` + avatar.name);
+            // avatar.mv(uploadaudiopath+`${id}/` + avatar.name);
             // avatar.mv('./uploads/' + avatar.name);
 
             //send response
