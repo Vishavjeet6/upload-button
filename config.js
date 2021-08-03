@@ -5,8 +5,8 @@ config.file={};
 // set default values
 config.file.filesize = '5242880';
 config.file.audiosize = '5242880';
-config.file.uploadfilepath = './uploads/';
-config.file.uploadaudiopath = './uploads/';
+config.file.uploadfilepath = './uploads/files';
+config.file.uploadaudiopath = './uploads/audio';
 
 
 const dotenv = require('dotenv');

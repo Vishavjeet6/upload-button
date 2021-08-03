@@ -8,11 +8,12 @@ const _ = require('lodash');
 const app = express();
 
 const config = require('./config');
-const { HTTP_PORT, HTTPS_PORT, KEY_FILE, CERT_FILE, PASS_PHRASE } = config.env;
+// const { HTTP_PORT, HTTPS_PORT, KEY_FILE, CERT_FILE, PASS_PHRASE } = config.env;
+const { HTTPS_PORT, KEY_FILE, CERT_FILE, PASS_PHRASE } = config.env;
 const { filesize , audiosize, uploadfilepath, uploadaudiopath} = config.file;
 
 var https = require('https');
-var http = require('http');
+// var http = require('http');
 var fs = require('fs');
 var path = require('path')
 
@@ -150,8 +151,8 @@ app.post('/upload/audio', async (req, res) => {
 // const port = process.env.PORT || 3000;
 
 
-http.createServer(app).listen(HTTP_PORT, () => 
-console.log(`HTTP App is listening on port ${process.env.HTTP_PORT}`));
+// http.createServer(app).listen(HTTP_PORT, () => 
+// console.log(`HTTP App is listening on port ${process.env.HTTP_PORT}`));
 https.createServer(options, app).listen(HTTPS_PORT, () => 
 console.log(`HTTPS App is listening on port ${process.env.HTTPS_PORT}`));
 
