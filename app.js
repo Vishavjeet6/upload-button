@@ -80,8 +80,18 @@ app.post('/upload/file', async (req, res) => {
             }
             
             //Use the mv() method to place the file in upload directory (i.e. "uploads")
-            avatar.mv(uploadfilepath +`/${id}_` + avatar.name);
             // avatar.mv('./uploads/' + avatar.name);
+            try {
+                avatar.mv(uploadfilepath +`/${id}_` + avatar.name);
+            } catch (error) {
+                console.log(error);
+                return res.send({
+                    status: 413,
+                    message: "file couldn't be uploaded"
+                });
+            }
+            
+            
 
             //send response
             res.send({
@@ -126,9 +136,19 @@ app.post('/upload/audio', async (req, res) => {
             }
             
             //Use the mv() method to place the file in upload directory (i.e. "uploads")
-            avatar.mv(uploadaudiopath +`/${id}_` + avatar.name);
             // avatar.mv(uploadaudiopath+`${id}/` + avatar.name);
             // avatar.mv('./uploads/' + avatar.name);
+            try {
+                avatar.mv(uploadaudiopath +`/${id}_` + avatar.name);
+            } catch (error) {
+                console.log(error);
+                return res.send({
+                    status: 413,
+                    message: "file couldn't be uploaded"
+                });
+            }
+            
+
 
             //send response
             res.send({
