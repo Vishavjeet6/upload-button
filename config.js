@@ -6,7 +6,7 @@ config.file={};
 config.file.filesize = '5242880';
 config.file.audiosize = '5242880';
 config.file.uploadfilepath = './uploads/files';
-config.file.uploadaudiopath = './uploads/audio';
+config.file.uploadaudiopath = './uploads/audios';
 
 
 const dotenv = require('dotenv');
