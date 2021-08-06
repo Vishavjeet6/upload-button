@@ -2,4 +2,4 @@ node_modules
 uploads
 index1.html
 app1.js
-.env*
+.env.*
