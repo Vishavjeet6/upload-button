@@ -23,11 +23,6 @@ html, body {
   100% { transform: rotate(360deg); }
 }
 
-/* .wrapper {
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-} */
 
 .main-controls {
   padding: 0.5rem 0;
@@ -59,7 +54,6 @@ canvas {
 button {
   font-size: 1rem;
   border-radius: 58px;
-  /* background: #0088cc; */
   background: #ca1522;
   text-align: center;
   color: white;
@@ -67,11 +61,6 @@ button {
   transition: all 0.2s;
   padding: 0.5rem;
 }
-
-/* button:hover, button:focus {
-  box-shadow: inset 0px 0px 10px rgba(255, 255, 255, 1);
-  background: #0ae;
-} */
 
 button:hover {
   cursor: pointer;
@@ -82,9 +71,6 @@ button:active {
   transform: translateY(2px);
 }
 
-/* Make the clips use as much space as possible, and
- * also show a scrollbar when there are too many clips to show
- * in the available space */
  .sound-clips {
   flex: 1;
   overflow: auto;

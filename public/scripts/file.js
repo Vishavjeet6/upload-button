@@ -6,7 +6,6 @@ formElem.onsubmit = async (e) => {
     var urlarr = url.split('/');
     var id = urlarr[urlarr.length - 1];
     document.formElem.userid.value = id;
-    //   document.getElementById("userid").value = id;
     }
 
     function validate(){
@@ -27,7 +26,6 @@ formElem.onsubmit = async (e) => {
           body: new FormData(formElem)
           });
        let result = await response.json();
-      //  alert(result.message);
        if(response.status == 200){
          window.close();
        }

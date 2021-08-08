@@ -11,11 +11,9 @@ config.file.uploadaudiopath = './uploads/audios';
 
 const dotenv = require('dotenv');
 const result = dotenv.config();
-// const result = dotenv.config({ path: `.env.${process.env. NODE_ENV}` });
 if (result.error) {
     throw result.error;
 }
 const { parsed: envs } = result;
 config.env = envs;
-// console.log(envs);
 module.exports = config;

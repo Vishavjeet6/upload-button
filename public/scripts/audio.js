@@ -137,8 +137,7 @@ function visualize(stream) {
     const dataArray = new Uint8Array(bufferLength);
   
     source.connect(analyser);
-    //analyser.connect(audioCtx.destination);
-  
+
     draw()
   
     function draw() {
@@ -192,7 +191,6 @@ async function upload(formData){
       body: formData
       });
       let result = await response.json();
-      // alert(result.message);
       if(response.status == 200){
         window.close();
       }else{
