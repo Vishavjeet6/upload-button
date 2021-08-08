@@ -7,20 +7,11 @@ const mainSection = document.querySelector('.main-controls');
 
 var blob = new Blob();
 
-// audio flag
-var liveaudio = false;
-var localaudio = false;
-
 // fetch id from url
 var url = window.location.href;
 var urlarr = url.split('/');
 var id = urlarr[urlarr.length - 1];
 
-
-// toggle localaudio flag
-document.getElementById('file_upload').onchange = function() {
-  localaudio = !localaudio;
-};
 
 // disable stop button while not recording
 stop.disabled = true;
@@ -64,7 +55,7 @@ if (navigator.mediaDevices.getUserMedia) {
 
         mediaRecorder.onstop = function(e) {
             console.log("data available after MediaRecorder.stop() called.");
-            liveaudio = true;
+
 
             const clipName = prompt('Enter a name for your sound clip?','My-Audio');
 
@@ -105,7 +96,6 @@ if (navigator.mediaDevices.getUserMedia) {
             deleteButton.onclick = function(e) {
                 let evtTgt = e.target;
                 evtTgt.parentNode.parentNode.removeChild(evtTgt.parentNode);
-                liveaudio = false;
             }
 
             clipLabel.onclick = function() {
@@ -205,6 +195,9 @@ async function upload(formData){
       // alert(result.message);
       if(response.status == 200){
         window.close();
+      }else{
+        alert('Couldnt upload.');
+        window.close();
       }
 }
 
@@ -213,36 +206,29 @@ function validate(){
   var size=5242880;
   if(document.getElementById('file_upload').files[0] === undefined) return false;
   var file_size=document.getElementById('file_upload').files[0].size;
-  if(file_size>size){
+  if(file_size==0 || file_size>size){
         return false;
   }
   return true;
 }
 
 function uploadAudio(){
-  if(liveaudio){
-    if(blob.size < 5242880){
+    if(blob.size>0 && blob.size < 5242880){
       var formData = new FormData();
       formData.append('file_upload',blob,document.getElementsByTagName('p')[0].textContent+'.wav');
       formData.append('userid',id);
-      upload(formData);
-    }else{
-      alert('Please Record Audio less than 5mb');
-    }
-
-    
-  }else if(localaudio){
-    if (validate()){
-      setID();
-      var formData = new FormData(document.getElementById('formElem'));
+      document.getElementsByClassName("loader")[0].style.display = 'block';
       upload(formData);
     }
-    else{
-      alert('Please Upload Audio less than 5mb');
+	else if (validate()){
+	  setID();
+	  var formData = new FormData(document.getElementById('formElem'));
+    document.getElementsByClassName("loader")[0].style.display = 'block';
+	  upload(formData);
+	}	
+	else{
+      alert('Please Record or Upload Audio less than 5mb');
     }
-  }else{
-    alert('Please Upload or Record Audio');
-  }
 }
 
 
