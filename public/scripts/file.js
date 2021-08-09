@@ -20,6 +20,7 @@ formElem.onsubmit = async (e) => {
 
     if(validate()){
        setID();
+       document.getElementsByClassName("loader")[0].style.display = 'block';
 
        let response = await fetch('/upload/file', {
           method: 'POST',
@@ -28,6 +29,9 @@ formElem.onsubmit = async (e) => {
        let result = await response.json();
        if(response.status == 200){
          window.close();
+       }else{
+         alert('File couldnot be uploaded');
+          window.close();
        }
        
     }else{
