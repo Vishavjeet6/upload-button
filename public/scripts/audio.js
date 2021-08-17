@@ -32,19 +32,18 @@ if (navigator.mediaDevices.getUserMedia) {
 
         record.onclick = function(){    
             mediaRecorder.start();
-            console.log(mediaRecorder.state);
-            console.log("recorder started");
-            record.style.background = "red";
-
-            stop.disabled = false;
+            record.style.backgroundColor  = "red";
+            stop.style.display='none';
+            setTimeout(function(){
+              stop.disabled = false;
+              stop.style.display='block';
+            },5000);
             record.disabled = true;
         }
 
 
         stop.onclick = function(){
             mediaRecorder.stop();
-            console.log(mediaRecorder.state);
-            console.log("recorder stopped");
             record.style.background = "";
             record.style.color = "";
 
@@ -54,19 +53,14 @@ if (navigator.mediaDevices.getUserMedia) {
         }
 
         mediaRecorder.onstop = function(e) {
-            console.log("data available after MediaRecorder.stop() called.");
-
-
-            const clipName = prompt('Enter a name for your sound clip?','My-Audio');
-
+            const clipName = prompt('Bitte geben Sie einen Namen für Ihren Soundclip ein:','My-Audio');
             const clipContainer = document.createElement('article');
             const clipLabel = document.createElement('p');
             const audio = document.createElement('audio');
             const deleteButton = document.createElement('button');
-
             clipContainer.classList.add('clip');
             audio.setAttribute('controls', '');
-            deleteButton.textContent = 'Delete';
+            deleteButton.textContent = 'Löschen';
             deleteButton.className = 'delete';
       
             if(clipName === null) {
@@ -90,8 +84,6 @@ if (navigator.mediaDevices.getUserMedia) {
             chunks = [];
             const audioURL = window.URL.createObjectURL(blob);
             audio.src = audioURL;
-            console.log("recorder stopped");
-
 
             deleteButton.onclick = function(e) {
                 let evtTgt = e.target;
@@ -100,7 +92,7 @@ if (navigator.mediaDevices.getUserMedia) {
 
             clipLabel.onclick = function() {
                 const existingName = clipLabel.textContent;
-                const newClipName = prompt('Enter a new name for your sound clip?', existingName);
+                const newClipName = prompt('Bitte geben Sie einen Namen für Ihren Soundclip ein:', existingName);
                 if(newClipName === null) {
                   clipLabel.textContent = existingName;
                 } else {
@@ -115,13 +107,13 @@ if (navigator.mediaDevices.getUserMedia) {
     }
 
     let onError = function(err) {
-        alert("Please Upload Audio, Live recording couldn't work due to "+ err);
+        alert("Live-Aufnahmen werden von Ihrem Browser nicht unterstützt! Bitte versuchen Sie es mit dem neuesten Browser");
     }   
 
     navigator.mediaDevices.getUserMedia(constraints).then(onSuccess, onError);
 
 } else {
-   alert('Live Recording is not supported on your browser! Please try latest browser Chrome/Mozilla');
+   alert('Live-Aufnahmen werden von Ihrem Browser nicht unterstützt! Bitte versuchen Sie es mit dem neuesten Browser');
 }
 
 function visualize(stream) {
@@ -194,7 +186,7 @@ async function upload(formData){
       if(response.status == 200){
         window.close();
       }else{
-        alert('Couldnt upload.');
+        alert('Ihre Datei wurde nicht hochgeladen');
         window.close();
       }
 }
@@ -225,7 +217,7 @@ function uploadAudio(){
 	  upload(formData);
 	}	
 	else{
-      alert('Please Record or Upload Audio less than 5mb');
+      alert('Bitte laden Sie Audio mit weniger als 5 MB hoch oder nehmen Sie es auf');
     }
 }
 
