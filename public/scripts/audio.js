@@ -12,7 +12,6 @@ var url = window.location.href;
 var urlarr = url.split('/');
 var id = urlarr[urlarr.length - 1];
 
-
 // disable stop button while not recording
 stop.disabled = true;
 
@@ -25,11 +24,9 @@ if (navigator.mediaDevices.getUserMedia) {
 
     const constraints = { audio: true };
     let chunks = [];
-
     let onSuccess = function(stream) {
         const mediaRecorder = new MediaRecorder(stream);
         visualize(stream);
-
         record.onclick = function(){    
             mediaRecorder.start();
             record.style.backgroundColor  = "red";
@@ -41,15 +38,12 @@ if (navigator.mediaDevices.getUserMedia) {
             record.disabled = true;
         }
 
-
         stop.onclick = function(){
             mediaRecorder.stop();
             record.style.background = "";
             record.style.color = "";
-
             stop.disabled = true;
             record.disabled = false;
-
         }
 
         mediaRecorder.onstop = function(e) {
@@ -62,7 +56,6 @@ if (navigator.mediaDevices.getUserMedia) {
             audio.setAttribute('controls', '');
             deleteButton.textContent = 'Löschen';
             deleteButton.className = 'delete';
-      
             if(clipName === null) {
                 clipLabel.textContent = 'My-Audio';
             } else {
@@ -142,10 +135,8 @@ function visualize(stream) {
   
       canvasCtx.fillStyle = 'rgb(200, 200, 200)';
       canvasCtx.fillRect(0, 0, WIDTH, HEIGHT);
-  
       canvasCtx.lineWidth = 2;
       canvasCtx.strokeStyle = 'rgb(0, 0, 0)';
-  
       canvasCtx.beginPath();
   
       let sliceWidth = WIDTH * 1.0 / bufferLength;
@@ -153,10 +144,8 @@ function visualize(stream) {
   
   
       for(let i = 0; i < bufferLength; i++) {
-  
         let v = dataArray[i] / 128.0;
         let y = v * HEIGHT/2;
-  
         if(i === 0) {
           canvasCtx.moveTo(x, y);
         } else {
@@ -170,11 +159,6 @@ function visualize(stream) {
       canvasCtx.stroke();
   
     }
-}
-
-
-function setID(){
-  document.getElementById("userid").value = id;
 }
 
 async function upload(formData){
@@ -192,31 +176,15 @@ async function upload(formData){
 }
 
 
-function validate(){
-  var size=5242880;
-  if(document.getElementById('file_upload').files[0] === undefined) return false;
-  var file_size=document.getElementById('file_upload').files[0].size;
-  if(file_size==0 || file_size>size){
-        return false;
-  }
-  return true;
-}
-
 function uploadAudio(){
-    if(blob.size>0 && blob.size < 5242880){
-      var formData = new FormData();
-      formData.append('file_upload',blob,document.getElementsByTagName('p')[0].textContent+'.wav');
-      formData.append('userid',id);
-      document.getElementsByClassName("loader")[0].style.display = 'block';
-      upload(formData);
-    }
-	else if (validate()){
-	  setID();
-	  var formData = new FormData(document.getElementById('formElem'));
+  if(blob.size>0 && blob.size < 5242880){
+    var formData = new FormData();
+    formData.append('file_upload',blob,document.getElementsByTagName('p')[0].textContent+'.wav');
+    formData.append('userid',id);
     document.getElementsByClassName("loader")[0].style.display = 'block';
-	  upload(formData);
-	}	
-	else{
+    upload(formData);
+  }
+  else{
       alert('Bitte laden Sie Audio mit weniger als 5 MB hoch oder nehmen Sie es auf');
     }
 }
