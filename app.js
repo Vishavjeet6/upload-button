@@ -41,6 +41,10 @@ app.get('/uploadaudio/:id', function (req, res) {
     res.sendFile(__dirname + "/audio.html");
 });
 
+app.get('/uploadaudioeng/:id', function (req, res) {
+    res.sendFile(__dirname + "/audio1.html");
+});
+
 app.post('/upload/file', async (req, res) => {
     try {
         if(!req.files) {
