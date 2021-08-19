@@ -46,6 +46,12 @@ canvas {
   width: 120px;
 }
 
+.close-button {
+  background-color: #3e4363;
+  width: 120px;
+  height: 30px;
+}
+
 .submit-button {
   width: 120px;
   height: 30px;

@@ -184,6 +184,9 @@ function uploadAudio(){
     document.getElementsByClassName("loader")[0].style.display = 'block';
     upload(formData);
   }
+  else if(blob.size == 0){
+    alert('Please submit a record that lasts more than 5 seconds');
+  }
   else{
       alert('Please record audio less than 5MB');
     }

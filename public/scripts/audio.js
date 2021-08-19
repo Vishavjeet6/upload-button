@@ -184,6 +184,9 @@ function uploadAudio(){
     document.getElementsByClassName("loader")[0].style.display = 'block';
     upload(formData);
   }
+  else if(blob.size == 0){
+    alert('Bitte reichen Sie eine Aufzeichnung ein, die länger als 5 Sekunden dauert');
+  }
   else{
       alert('Bitte laden Sie Audio mit weniger als 5 MB hoch oder nehmen Sie es auf');
     }
