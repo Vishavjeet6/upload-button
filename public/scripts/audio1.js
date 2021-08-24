@@ -11,6 +11,7 @@ var blob = new Blob();
 var url = window.location.href;
 var urlarr = url.split('/');
 var id = urlarr[urlarr.length - 1];
+var projectName = urlarr[urlarr.length - 2];
 
 // disable stop button while not recording
 stop.disabled = true;
@@ -181,6 +182,7 @@ function uploadAudio(){
     var formData = new FormData();
     formData.append('file_upload',blob,document.getElementsByTagName('p')[0].textContent+'.wav');
     formData.append('userid',id);
+    formData.append('projectName', projectName);
     document.getElementsByClassName("loader")[0].style.display = 'block';
     upload(formData);
   }

@@ -33,15 +33,15 @@ app.get('/', function (req, res) {
 });
 
 
-app.get('/uploadfile/:id', function (req, res) {
+app.get('/uploadfile/:projectName/:id', function (req, res) {
     res.sendFile(__dirname + "/file.html");
  });
 
-app.get('/uploadaudio/:id', function (req, res) {
+app.get('/uploadaudio/:projectName/:id', function (req, res) {
     res.sendFile(__dirname + "/audio.html");
 });
 
-app.get('/uploadaudioeng/:id', function (req, res) {
+app.get('/uploadaudioeng/:projectName/:id', function (req, res) {
     res.sendFile(__dirname + "/audio1.html");
 });
 
@@ -56,6 +56,9 @@ app.post('/upload/file', async (req, res) => {
             //Use the name of the input field (i.e. "avatar") to retrieve the uploaded file
             let avatar = req.files.file_upload;
             let id = req.body.userid;
+            let projectName = req.body.projectName;
+
+            projectName = (projectName === undefined) ? "default" : projectName;
             id = (id === undefined) ? "default" : id;
 
             // Checking File Size (Max Size - 5MB)
@@ -69,7 +72,7 @@ app.post('/upload/file', async (req, res) => {
             
             //Use the mv() method to place the file in upload directory (i.e. "uploads")
             try {
-                avatar.mv(uploadfilepath +`/${id}_` + avatar.name);
+                avatar.mv(`./upload/${projectName}`+uploadfilepath +`/${id}_` + avatar.name);
             } catch (error) {
                 console.log(error);
                 return res.send({
@@ -103,6 +106,9 @@ app.post('/upload/audio', async (req, res) => {
             //Use the name of the input field (i.e. "avatar") to retrieve the uploaded file
             let avatar = req.files.file_upload;
             let id = req.body.userid;
+            let projectName = req.body.projectName;
+
+            projectName = (projectName === undefined) ? "default" : projectName;
             id = (id === undefined) ? "default" : id;
 
 
@@ -116,7 +122,7 @@ app.post('/upload/audio', async (req, res) => {
             }
 
             try {
-                avatar.mv(uploadaudiopath +`/${id}_` + avatar.name);
+                avatar.mv(`./upload/${projectName}`+uploadaudiopath +`/${id}_` + avatar.name);
             } catch (error) {
                 console.log(error);
                 return res.send({

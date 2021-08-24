@@ -5,6 +5,8 @@ formElem.onsubmit = async (e) => {
     var url = window.location.href;
     var urlarr = url.split('/');
     var id = urlarr[urlarr.length - 1];
+    var projectName = urlarr[urlarr.length - 2];
+    document.formElem.projectName.value = projectName;
     document.formElem.userid.value = id;
     }
 
