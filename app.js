@@ -45,6 +45,14 @@ app.get('/uploadaudioeng/:projectName/:id', function (req, res) {
     res.sendFile(__dirname + "/audio1.html");
 });
 
+app.get('/uploadaudiofr/:projectName/:id', function (req, res) {
+    res.sendFile(__dirname + "/audiofrance.html");
+});
+
+app.get('/uploadaudioes/:projectName/:id', function (req, res) {
+    res.sendFile(__dirname + "/audiospain.html");
+});
+
 app.post('/upload/file', async (req, res) => {
     try {
         if(!req.files) {

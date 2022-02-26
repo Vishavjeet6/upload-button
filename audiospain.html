@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Audio Upload</title>
+    <link href="/styles/audio.css" rel="stylesheet" type="text/css">
+</head>
+<body>
+    <div class="loader overlay"></div>
+    <div class="div" id="page_form">
+        <div class="cf-page__header" role="banner"></div>
+        <table id="questionTable" style="width: 100%" width="100%">
+            <tbody>
+                <tr>
+                    <td style="text-align: center"><img style="width: 100%" alt="" src="/images/banner.png" width="1373" height="145" border="0">&nbsp;</td>
+                </tr>
+                <tr>
+                    <td>
+                       <div class="stitle" style="text-align: center;">Encuesta en el campo de los síndromes mielodisplásicos</div>
+                       <div><hr style="border: solid #ca1522 2px;"></div>
+                       <!-- <b>Please Record Audio </b>
+                       (Note: Audio upload might take upto a minute) -->
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        Para evitar problemas con su grabación de audio, siga estas instrucciones:
+                        <li>
+                            Cuando haya terminado de grabar su respuesta, pulse el botón para detener la grabación.
+                        </li>
+                        <li>
+                            A continuación, haga clic en el botón de envío para asegurarse de que su respuesta se ha registrado.
+                        </li>
+                    </td>
+                </tr>
+                <tr class="main-content">
+                    <td>
+                        <div class="wrapper">
+                            <section class="main-controls">
+                                <canvas class="visualizer" height="60px"></canvas>
+                                <div id="buttons">
+                                <button class="record">Grabar</button>
+                                <button class="stop">Detener</button>
+                                </div>
+                            </section>   
+
+                            <section class="sound-clips">
+                            </section>
+                        <div style="text-align:right">
+                            <button class="close-button"  onclick="window.close()">Cancelar</button>
+                            <button class="submit-button" onclick="uploadAudio()">Enviar</button>
+                            <br/>
+                            <br/>
+                        </div>
+
+                        </div>
+                    </td>
+                </tr>
+                <tr class="extra-content">
+                    <td></td>
+                </tr>                       
+            </tbody>
+        </table>
+    </div>
+    <script src="/scripts/audiospain.js"></script>
+</body>
+</html>
