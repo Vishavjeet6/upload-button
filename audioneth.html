@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Audio Upload</title>
+    <link href="/styles/audio.css" rel="stylesheet" type="text/css">
+</head>
+<body>
+    <div class="loader overlay"></div>
+    <div class="div" id="page_form">
+        <div class="cf-page__header" role="banner"></div>
+        <table id="questionTable" style="width: 100%" width="100%">
+            <tbody>
+                <tr>
+                    <td style="text-align: center"><img style="width: 100%" alt="" src="/images/banner.png" width="1373" height="145" border="0">&nbsp;</td>
+                </tr>
+                <tr>
+                    <td>
+                       <div class="stitle" style="text-align: center;">Vragenlijst inzake myelodysplastische syndromen</div>
+                       <div><hr style="border: solid #ca1522 2px;"></div>
+                       <!-- <b>Please Record Audio </b>
+                       (Note: Audio upload might take upto a minute) -->
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        Om elk probleem met uw geluidsopname te vermijden, gelieve deze twee instructies te volgen:
+                        <li>
+                            Druk na uw opname op de knop “stoppen”.
+                        </li>
+                        <li>
+                            Klik vervolgens op “indienen” om zeker te zijn dat uw antwoord is geregistreerd.
+                        </li>
+                    </td>
+                </tr>
+                <tr class="main-content">
+                    <td>
+                        <div class="wrapper">
+                            <section class="main-controls">
+                                <canvas class="visualizer" height="60px"></canvas>
+                                <div id="buttons">
+                                <button class="record">opnemen</button>
+                                <button class="stop">stoppen</button>
+                                </div>
+                            </section>   
+
+                            <section class="sound-clips">
+                            </section>
+                        <div style="text-align:right">
+                            <button class="close-button"  onclick="window.close()">annuleren</button>
+                            <button class="submit-button" onclick="uploadAudio()">indienen</button>
+                            <br/>
+                            <br/>
+                        </div>
+
+                        </div>
+                    </td>
+                </tr>
+                <tr class="extra-content">
+                    <td></td>
+                </tr>                       
+            </tbody>
+        </table>
+    </div>
+    <script src="/scripts/audioneth.js"></script>
+</body>
+</html>
