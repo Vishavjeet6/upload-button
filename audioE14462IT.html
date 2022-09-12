@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Audio Upload</title>
+    <link href="/styles/audio.css" rel="stylesheet" type="text/css">
+</head>
+<body>
+    <div class="loader overlay"></div>
+    <div class="div" id="page_form">
+        <div class="cf-page__header" role="banner"></div>
+        <table id="questionTable" style="width: 100%" width="100%">
+            <tbody>
+                <tr>
+                    <td style="text-align: center"><img style="width: 100%" alt="" src="/images/banner.png" width="1373" height="145" border="0">&nbsp;</td>
+                </tr>
+                <tr>
+                    <td>
+                       <div class="stitle" style="text-align: center;">Indagine nel campo <b>della leucemia linfocitica cronica, della macroglobulinemia di Waldenström e del linfoma della zona marginale</b></div>
+                       <div><hr style="border: solid #ca1522 2px;"></div>
+                       <!-- <b>Please Record Audio </b>
+                       (Note: Audio upload might take upto a minute) -->
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        Per evitare qualsiasi problema con l'audio, La preghiamo di seguire queste due istruzioni:
+                        <li>
+                            Dopo la registrazione, premere il pulsante "interrompi".
+                        </li>
+                        <li>
+                            Poi dovrà cliccare su "invia" per essere sicuro/a che la Sua risposta sia stata registrata.
+                        </li>
+                    </td>
+                </tr>
+                <tr class="main-content">
+                    <td>
+                        <div class="wrapper">
+                            <section class="main-controls">
+                                <canvas class="visualizer" height="60px"></canvas>
+                                <div id="buttons">
+                                <button class="record">Registra</button>
+                                <button class="stop">Interrompi</button>
+                                </div>
+                            </section>   
+
+                            <section class="sound-clips">
+                            </section>
+                        <div style="text-align:right">
+                            <button class="close-button"  onclick="window.close()">Annulla</button>
+                            <button class="submit-button" onclick="uploadAudio()">Invia</button>
+                            <br/>
+                            <br/>
+                        </div>
+
+                        </div>
+                    </td>
+                </tr>
+                <tr class="extra-content">
+                    <td></td>
+                </tr>                       
+            </tbody>
+        </table>
+    </div>
+    <script src="/scripts/audioitaly.js"></script>
+</body>
+</html>

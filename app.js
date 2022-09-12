@@ -53,6 +53,18 @@ app.get('/uploadaudioDEE14462/:projectName/:id', function (req, res) {
     res.sendFile(__dirname + "/audioE14462DE.html");
 });
 
+app.get('/uploadaudioESE14462/:projectName/:id', function (req, res) {
+    res.sendFile(__dirname + "/audioE14462ES.html");
+});
+
+app.get('/uploadaudioITE14462/:projectName/:id', function (req, res) {
+    res.sendFile(__dirname + "/audioE14462IT.html");
+});
+
+app.get('/uploadaudioFRE14462/:projectName/:id', function (req, res) {
+    res.sendFile(__dirname + "/audioE14462FR.html");
+});
+
 app.get('/uploadaudiofr/:projectName/:id', function (req, res) {
     res.sendFile(__dirname + "/audiofrance.html");
 });
