@@ -65,6 +65,11 @@ app.get('/uploadaudioFRE14462/:projectName/:id', function (req, res) {
     res.sendFile(__dirname + "/audioE14462FR.html");
 });
 
+app.get('/uploadaudioDKE14462/:projectName/:id', function (req, res) {
+    res.sendFile(__dirname + "/audioE14462DK.html");
+});
+
+
 app.get('/uploadaudiofr/:projectName/:id', function (req, res) {
     res.sendFile(__dirname + "/audiofrance.html");
 });

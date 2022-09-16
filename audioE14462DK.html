@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Upload lydfil</title>
+    <link href="/styles/audio.css" rel="stylesheet" type="text/css">
+</head>
+<body>
+    <div class="loader overlay"></div>
+    <div class="div" id="page_form">
+        <div class="cf-page__header" role="banner"></div>
+        <table id="questionTable" style="width: 100%" width="100%">
+            <tbody>
+                <tr>
+                    <td style="text-align: center"><img style="width: 100%" alt="" src="/images/banner.png" width="1373" height="145" border="0">&nbsp;</td>
+                </tr>
+                <tr>
+                    <td>
+                       <div class="stitle" style="text-align: center;">Spørgeskemaundersøgelse vedrørende <b>Kronisk lymfatisk leukæmi, Waldenströms makroglobulinæmi og marginal zone lymfom</b></div>
+                       <div><hr style="border: solid #ca1522 2px;"></div>
+                       <b>Optag lydfil</b>
+                       (Bemærk: Upload af lydfil kan tage op til et minut)
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        For at undgå eventuelle problemer med din lydfil bedes du følge disse to instruktioner:
+                        <li>
+                            Efter at have indtalt svaret skal du trykke på "stop"-knappen.
+                        </li>
+                        <li>
+                            Derefter skal du klikke på "send" for at sikre, at dit svar er blevet registreret.
+                        </li>
+                    </td>
+                </tr>
+                <tr class="main-content">
+                    <td>
+                        <div class="wrapper">
+                            <section class="main-controls">
+                                <canvas class="visualizer" height="60px"></canvas>
+                                <div id="buttons">
+                                <button class="record">Optag</button>
+                                <button class="stop">Stop</button>
+                                </div>
+                            </section>   
+
+                            <section class="sound-clips">
+                            </section>
+                        <div style="text-align:right">
+                            <button class="close-button"  onclick="window.close()">Annuller</button>
+                            <button class="submit-button" onclick="uploadAudio()">Send</button>
+                            <br/>
+                            <br/>
+                        </div>
+
+                        </div>
+                    </td>
+                </tr>
+                <tr class="extra-content">
+                    <td></td>
+                </tr>                       
+            </tbody>
+        </table>
+    </div>
+    <script src="/scripts/audioE14462DK.js"></script>
+</body>
+</html>
