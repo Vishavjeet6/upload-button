@@ -33,6 +33,10 @@ canvas {
   margin-bottom: 0.5rem;
 }
 
+.pipe{
+ color:#d70000;
+}
+
 #buttons {
   height: 30px;
   width: 300px;

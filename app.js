@@ -13,6 +13,9 @@ var http = require('http');
 var fs = require('fs');
 var path = require('path')
 
+// to render the ejs file
+app.set("view engine", "ejs");
+
 // enable css and js
 app.use(express.static(path.join(__dirname, '/public')));
 
@@ -85,6 +88,12 @@ app.get('/uploadaudioit/:projectName/:id', function (req, res) {
 app.get('/uploadaudione/:projectName/:id', function (req, res) {
     res.sendFile(__dirname + "/audioneth.html");
 });
+
+app.get("/dp/uploadaudioen/:tx/:projectName/:id", (req, res) => {
+    var text = req.params["tx"];
+    text = text.slice(1,-1);
+    res.render("dpaudioen", {text: text});
+   });
 
 app.post('/upload/file', async (req, res) => {
     try {
