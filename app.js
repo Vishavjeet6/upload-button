@@ -92,8 +92,44 @@ app.get('/uploadaudione/:projectName/:id', function (req, res) {
 app.get("/dp/uploadaudioen/:tx/:projectName/:id", (req, res) => {
     var text = req.params["tx"];
     text = text.slice(1,-1);
+    text = text.replace(/@/g, "/");
+    text = decodeURIComponent(text);
     res.render("dpaudioen", {text: text});
    });
+
+   app.get("/dp/uploadaudione/:tx/:projectName/:id", (req, res) => {
+    var text = req.params["tx"];
+    text = text.slice(1,-1);
+    text = text.replace(/@/g, "/");
+    text = decodeURIComponent(text);
+    res.render("dpaudione", {text: text});
+   });
+
+   app.get("/dp/uploadaudiofr/:tx/:projectName/:id", (req, res) => {
+    var text = req.params["tx"];
+    text = text.slice(1,-1);
+    text = text.replace(/@/g, "/");
+    text = decodeURIComponent(text);
+    res.render("dpaudiofr", {text: text});
+   });
+
+   app.get("/dp/uploadaudioit/:tx/:projectName/:id", (req, res) => {
+    var text = req.params["tx"];
+    text = text.slice(1,-1);
+    text = text.replace(/@/g, "/");
+    text = decodeURIComponent(text);
+    res.render("dpaudioit", {text: text});
+   });
+
+
+   app.get("/dp/uploadaudioes/:tx/:projectName/:id", (req, res) => {
+    var text = req.params["tx"];
+    text = text.slice(1,-1);
+    text = text.replace(/@/g, "/");
+    text = decodeURIComponent(text);
+    res.render("dpaudioes", {text: text});
+   });
+
 
 app.post('/upload/file', async (req, res) => {
     try {
