@@ -56,6 +56,10 @@ app.get('/uploadaudioDEE14462/:projectName/:id', function (req, res) {
     res.sendFile(__dirname + "/audioE14462DE.html");
 });
 
+app.get('/uploadaudioneE14462/:projectName/:id', function (req, res) {
+    res.sendFile(__dirname + "/audioE14462ne.html");
+});
+
 app.get('/uploadaudioESE14462/:projectName/:id', function (req, res) {
     res.sendFile(__dirname + "/audioE14462ES.html");
 });
