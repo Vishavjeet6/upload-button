@@ -134,6 +134,14 @@ app.get("/dp/uploadaudioen/:tx/:projectName/:id", (req, res) => {
     res.render("dpaudioes", {text: text});
    });
 
+   app.get("/dp/uploadaudiode/:tx/:projectName/:id", (req, res) => {
+    var text = req.params["tx"];
+    text = text.slice(1,-1);
+    text = text.replace(/@/g, "/");
+    text = decodeURIComponent(text);
+    res.render("dpaudiode", {text: text});
+   });
+
 
 app.post('/upload/file', async (req, res) => {
     try {
