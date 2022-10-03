@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Audio Upload</title>
+    <link href="/styles/audio.css" rel="stylesheet" type="text/css">
+</head>
+<body>
+    <div class="loader overlay"></div>
+    <div class="div" id="page_form">
+        <div class="cf-page__header" role="banner"></div>
+        <table id="questionTable" style="width: 100%" width="100%">
+            <tbody>
+                <tr>
+                    <td style="text-align: center"><img style="width: 100%" alt="" src="/images/banner.png" width="1373" height="145" border="0">&nbsp;</td>
+                </tr>
+                <tr>
+                    <td>
+                       <div class="stitle" style="text-align: center;"><b>Umfrage auf dem Gebiet der myelodysplastischen Syndrome</b></div>
+                       <div><hr style="border: solid #ca1522 2px;"></div>
+                       <b>Wenn Sie einer Kollegin oder einem Kollegen sagen müssten, was die Hauptbotschaft des <span class="pipe"><%=text%></span> Vertreters/der Vertreterin für die Behandlung des myelodysplastischen Syndroms war, was würden Sie sagen?  </b>
+                       <br><I>Bitte versuchen Sie, sich an so viele Einzelheiten wie möglich zu erinnern, einschliesslich aller Claims über die Produktleistung, die Behandlungslinie, Patientenuntergruppen, klinische Studiendaten usw. Beispiel: „Die Hauptbotschaft der Vertreterin/des Vertreters war, dass für Medikament X neue Daten vorliegen, die ein dauerhaftes und komplettes Ansprechen bei Y % der geeigneten Patient:innen zeigen. Darüber hinaus diskutierten wir Strategien zur Behandlung symptomatischer Patient:innen
+                       mit hoher Tumorlast. Insgesamt war ich mit dem Treffen sehr zufrieden (oder auch nicht).</I> <br><br>
+                       <div><hr style="border: solid #ca1522 2px;"></div>
+                       <!-- <b>Bitte Audio aufnehmen</b>
+                       (Hinweis: Das Hochladen der Audiodatei kann bis zu einer Minute dauern) -->
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        Um Probleme mit Ihrer Audiodatei zu vermeiden, befolgen Sie bitte diese beiden Anweisungen:
+                        <li>
+                            Nachdem Sie sich selbst aufgenommen haben, drücken Sie bitte die „Stopp“-Taste.
+                        </li>
+                        <li>
+                            Klicken Sie danach auf „<font color='red'><b>Einreichen</b></font>“, um Ihre Antwort zu erfassen."
+                        </li>
+                    </td>
+                </tr>
+                <tr class="main-content">
+                    <td>
+                        <div class="wrapper">
+                            <section class="main-controls">
+                                <canvas class="visualizer" height="60px"></canvas>
+                                <div id="buttons">
+                                <button class="record">Aufnehmen</button>
+                                <button class="stop">Stopp</button>
+                                </div>
+                            </section>   
+
+                            <section class="sound-clips">
+                            </section>
+                        <div style="text-align:right">
+                            <button class="close-button"  onclick="window.close()">Abbrechen</button>
+                            <button class="submit-button" onclick="uploadAudio()">Einreichen</button>
+                            <br/>
+                            <br/>
+                        </div>
+
+                        </div>
+                    </td>
+                </tr>
+                <tr class="extra-content">
+                    <td></td>
+                </tr>                       
+            </tbody>
+        </table>
+    </div>
+    <script src="/scripts/audio.js"></script>
+</body>
+</html>
